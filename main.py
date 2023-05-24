@@ -8,14 +8,16 @@ if __name__ == "__main__":
     # code = "sz.000001"
     # code = "sh.600771" # 广誉远
     # code = "sz.002182" # 云海金属
-    code = "sz.000636" # 风华高科
+    # code = "sz.000636" # 风华高科
+    # code = "sz.002230" # 科大讯飞
    # code = "sz.300253" # 卫宁健康
+    code = "sh.000852"  # 中证1000指数
 
     begin_time = "2018-01-01"
     end_time = None
     data_src = DATA_SRC.BAO_STOCK  # 数据源
-    # lv_list = [KL_TYPE.K_DAY]  # k线级别
-    lv_list = [KL_TYPE.K_DAY, KL_TYPE.K_60M]  # k线级别
+    lv_list = [KL_TYPE.K_DAY]  # k线级别
+    #lv_list = [KL_TYPE.K_DAY, KL_TYPE.K_60M]  # k线级别
 
     config = CChanConfig({
         "bi_strict": True, # 是否只用严格笔(bi_algo=normal时有效)，默认为 Ture
@@ -30,6 +32,7 @@ if __name__ == "__main__":
         "macd_algo": "peak", # MACD指标算法（可自定义）
         "bs_type": '1,2,3a,1p,2s,3b', # 关注的买卖点类型，逗号分隔，默认"1,1p,2,2s,3a,3b"
         "print_warning": True, # 打印K线不一致的明细，默认为 True
+        "mean_metrics": [7,77,177]
     })
 
     plot_config = {
@@ -40,7 +43,7 @@ if __name__ == "__main__":
         "plot_eigen": False, # 画特征序列（一般调试用），默认为 False
         "plot_zs": True, # 画中枢，默认为 False
         "plot_macd": False, # 画 MACD 图（图片下方额外开一幅图），默认为 False
-        "plot_mean": False,  # 画均线，默认为 False
+        "plot_mean": True,  # 画均线，默认为 False
         "plot_channel": False, # 画上下轨道，默认为 False
         "plot_bsp": True, # 画理论买卖点，默认为 False
         "plot_extrainfo": False,
