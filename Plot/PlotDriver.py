@@ -176,8 +176,8 @@ class CPlotDriver:
         for meta, lv in zip(plot_metas, self.lv_lst):  # type: ignore
             ax = axes[lv][0]
             ax_macd = None if len(axes[lv]) == 1 else axes[lv][1]
-            set_grid(ax, figure_config.get("grid", "xy"))
-            ax.set_title(f"{chan.code}/{lv.name.split('K_')[1]}", fontsize=16, loc='left', color='r')
+            set_grid(ax, figure_config.get("grid", "xy")) # 显示区域？
+            ax.set_title(f"{chan.code}/{lv.name.split('K_')[1]}", fontsize=16, loc='left', color='r') #标题
 
             x_limits = cal_x_limit(meta, x_range)
             if lv != self.lv_lst[0]:
