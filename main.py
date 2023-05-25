@@ -3,20 +3,25 @@ from ChanConfig import CChanConfig
 from Common.CEnum import AUTYPE, DATA_SRC, KL_TYPE
 from Plot.AnimatePlotDriver import CAnimateDriver
 from Plot.PlotDriver import CPlotDriver
+from server import Server
+import web
+
 
 if __name__ == "__main__":
     # code = "sz.000001"
     # code = "sh.600771" # 广誉远
     # code = "sz.002182" # 云海金属
-    # code = "sz.000636" # 风华高科
+    #code = "sz.000636" # 风华高科
     # code = "sz.002230" # 科大讯飞
-   # code = "sz.300253" # 卫宁健康
-    code = "sh.000852"  # 中证1000指数
+    code = "sz.300253" # 卫宁健康
+    code = "sz.000936" # 华西股份
+    #code = "sh.000852"  # 中证1000指数
 
     begin_time = "2018-01-01"
     end_time = None
     data_src = DATA_SRC.BAO_STOCK  # 数据源
     lv_list = [KL_TYPE.K_DAY]  # k线级别
+    #lv_list = [KL_TYPE.K_30M]  # k线级别
     #lv_list = [KL_TYPE.K_DAY, KL_TYPE.K_60M]  # k线级别
 
     config = CChanConfig({
@@ -80,10 +85,18 @@ if __name__ == "__main__":
             plot_para=plot_para,
         )
         plot_driver.figure.show()
-        print("ok");
+        path = "./result/img.png"
+
+        plot_driver.save2img(path=path)
+
+
+        web.runWeb()
+
     else:
         CAnimateDriver(
             chan,
             plot_config=plot_config,
             plot_para=plot_para,
         )
+
+
